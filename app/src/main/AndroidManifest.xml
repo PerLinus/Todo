@@ -16,9 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ToDo" />
-        <activity android:name=".ShoppingList" />
-        <activity android:name=".Passwords"></activity>
+        <activity android:name=".ToDoActivity" />
+        <activity android:name=".ShoppingListActivity" />
+        <activity android:name=".PasswordActivity"></activity>
     </application>
 
 </manifest>
