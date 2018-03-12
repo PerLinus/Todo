@@ -4,15 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/activity_main_background"
     tools:context="com.nilsson83gmail.linus.todo.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/toDos"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="150dp"
+        android:text="Todo"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/colorAccent"
+        android:background="@drawable/roundedbutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/shoppingLists"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="73dp"
+        android:text="Shopping"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/colorAccent"
+        android:background="@drawable/roundedbutton"
+        app:layout_constraintStart_toStartOf="@+id/toDos"
+        app:layout_constraintTop_toBottomOf="@+id/toDos" />
+
+    <Button
+        android:id="@+id/passwords"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="73dp"
+        android:text="Passwords"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/colorAccent"
+        android:background="@drawable/roundedbutton"
+        app:layout_constraintStart_toStartOf="@+id/shoppingLists"
+        app:layout_constraintTop_toBottomOf="@+id/shoppingLists" />
 </android.support.constraint.ConstraintLayout>
