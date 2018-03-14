@@ -1,9 +1,9 @@
 package com.nilsson83gmail.linus.todo;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -15,13 +15,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         //Buttons
-        findViewById(R.id.toDo).setOnClickListener(this);
-        findViewById(R.id.shoppingLists).setOnClickListener(this);
-        findViewById(R.id.passwords).setOnClickListener(this);
+        findViewById(R.id.todoButton).setOnClickListener(this);
+        findViewById(R.id.shoppingButton).setOnClickListener(this);
+        findViewById(R.id.passwordButton).setOnClickListener(this);
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View view) {
+        int i = view.getId();
+        if (i == R.id.todoButton) {
+            Intent intent = new Intent(MainActivity.this, TodoListActivity.class);
+            startActivity(intent);
+        } else if (i == R.id.shoppingButton) {
+            Intent intent = new Intent(MainActivity.this, ShoppingListActivity.class);
+            startActivity(intent);
+        } else if (i == R.id.passwordButton) {
+            Intent intent = new Intent(MainActivity.this, PasswordActivity.class);
+            startActivity(intent);
+        }
 
     }
 }

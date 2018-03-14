@@ -11,9 +11,29 @@ public class Todo {
 
     private String name;
     private List<String> todoList;
-    private List<String> list1 = new ArrayList<>();
-    private List<String> list2 = new ArrayList<>();
+    private static List<String> list1 = new ArrayList<>();
+    private static List<String> list2 = new ArrayList<>();
 
+    public static final Todo[] toDos = {
+            new Todo("Ska göra", list1),
+            new Todo("Att fixa", list2),
+            new Todo("Mums", list2),
+            new Todo("Test", list2),
+            new Todo("Attans", list2),
+            new Todo("Nu funkar det", list2),
+            new Todo("Hur lång kan jag göra en String i min fina lista?", list2),
+            new Todo("Fixa", list2),
+            new Todo("Att fixa", list2),
+            new Todo("Test", list2),
+            new Todo("Komigen nu", list2),
+            new Todo("Linus", list2),
+            new Todo("Jon Doe", list2),
+            new Todo("Möte", list2),
+            new Todo("Jobba", list2),
+            new Todo("Jaha", list2),
+            new Todo("Doktor", list2),
+            new Todo("Java", list2)
+    };
 
     public Todo(String name, List<String> todoList) {
         this.name = name;
@@ -44,14 +64,7 @@ public class Todo {
         list2.add("Handla");
         list2.add("Uppdatera datorn");
         list2.add("skaffa jobb");
-
     }
-
-
-
-    public static final Todo[] toDos = {
-            new Todo("Ska göra", new ArrayList<String>())
-    };
 
 
     public String getName() {
@@ -62,11 +75,12 @@ public class Todo {
         this.name = name;
     }
 
-    public List<String> getTodoList() {
+    /*public List<String> getTodoList() {
         return todoList;
     }
 
     public void setTodoList(List<String> todoList) {
         this.todoList = todoList;
-    }
+    }*/
 }
+
