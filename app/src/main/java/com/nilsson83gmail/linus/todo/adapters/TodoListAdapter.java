@@ -11,72 +11,64 @@ import android.widget.TextView;
 import com.nilsson83gmail.linus.todo.R;
 import com.nilsson83gmail.linus.todo.models.Todo;
 
+import java.util.List;
+
 /**
  * Created by s060qm on 3/13/2018.
  */
 
 public class TodoListAdapter extends RecyclerView.Adapter<TodoListAdapter.TodoListAdapterViewHolder> {
 
-    private String[] toDos;
+    private List<Todo> todos;
 
-    private final TodoListAdapterOnClickHandler clickHandler;
+    //private final TodoListAdapterOnclickHandler clickHandler;
+    private View.OnClickListener clickHandler;
 
-    public interface TodoListAdapterOnClickHandler {
+   /* public interface TodoListAdapterOnClickHandler {
         void onClick(String chosenTodo);
-    }
+    }*/
 
-    public TodoListAdapter(TodoListAdapterOnClickHandler clickHandler) {
+    public TodoListAdapter(List<Todo> todos, View.OnClickListener clickHandler) {
+
+        this.todos = todos;
         this.clickHandler = clickHandler;
-        this.toDos = new String[Todo.toDos.length];
-        for (int i = 0; i < Todo.toDos.length; i++) {
-            this.toDos[i] = Todo.toDos[i].getName();
-        }
     }
 
     @NonNull
     @Override
     public TodoListAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        Context context = viewGroup.getContext();
-        int layoutIdForListItem = R.layout.todo_list_item;
-        LayoutInflater inflater = LayoutInflater.from(context);
-        boolean shouldAttachToParentImmediately = false;
-
-        View view = inflater.inflate(layoutIdForListItem, viewGroup, shouldAttachToParentImmediately);
-        return new TodoListAdapterViewHolder(view);
+        return new TodoListAdapterViewHolder(LayoutInflater.from(viewGroup.getContext())
+                                            .inflate(R.layout.todo_list_item, viewGroup, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull TodoListAdapter.TodoListAdapterViewHolder holder, int position) {
-        String todoTest = toDos[position];
-        holder.tvTodoListItem.setText(todoTest);
+        Todo todo = todos.get(position);
+        holder.tvTodoListItem.setText(todo.getName());
+        holder.itemView.setTag(todo);
+        holder.itemView.setOnClickListener(clickHandler);
     }
 
     @Override
     public int getItemCount() {
-        if (toDos == null) {
+        if (todos == null) {
             return 0;
         }
-        return toDos.length;
+        return todos.size();
     }
 
-    public class TodoListAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public void addItems(List<Todo> todos) {
+        this.todos = todos;
+        notifyDataSetChanged();
+    }
 
-        public final TextView tvTodoListItem;
+    public class TodoListAdapterViewHolder extends RecyclerView.ViewHolder {
 
-        public TodoListAdapterViewHolder(View itemView) {
+        private TextView tvTodoListItem;
+
+        TodoListAdapterViewHolder(View itemView) {
             super(itemView);
             tvTodoListItem = (TextView) itemView.findViewById(R.id.tv_todo_list_item);
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View view) {
-            int adapterPosition = getAdapterPosition();
-            String todoItem = toDos[adapterPosition];
-            clickHandler.onClick(todoItem);
         }
     }
-
-
-
 }
