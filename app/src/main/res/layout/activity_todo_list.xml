@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/activity_to_do_background"
+    android:background="@drawable/activity_todo_list_background"
     tools:context="com.nilsson83gmail.linus.todo.TodoListActivity">
 
     <android.support.v7.widget.RecyclerView
@@ -27,5 +27,14 @@
         android:layout_height="42dp"
         android:layout_gravity="center"
         android:visibility="invisible" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_create_todo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:src="@drawable/ic_activity_todo_list_fab"
+        android:tint="@color/colorPrimary"
+        android:layout_margin="16dp"/>
 
 </FrameLayout>
