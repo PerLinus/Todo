@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -35,10 +36,10 @@ public class TodoListActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todo_list);
 
+        findViewById(R.id.fab_create_todo).setOnClickListener(this);
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_todolist);
 
         mTodoListAdapter = new TodoListAdapter(new ArrayList<Todo>(), this);
-
 
         //mErrorMessageDisplay = (TextView) findViewById(R.id.tv_todo_list_error_message);
 
@@ -65,10 +66,15 @@ public class TodoListActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View view) {
-        Todo todo = (Todo) view.getTag();
-        Intent intent = new Intent(TodoListActivity.this, TodoActivity.class);
-        intent.putExtra("name", todo.getName());
-        intent.putExtra("content", todo.getTodos());
-        startActivity(intent);
+        if (view.getId() == R.id.fab_create_todo) {
+            Intent intent = new Intent(TodoListActivity.this, ShoppingListActivity.class);
+            startActivity(intent);
+        } else {
+            Todo todo = (Todo) view.getTag();
+            Intent intent = new Intent(TodoListActivity.this, TodoActivity.class);
+            intent.putExtra("name", todo.getName());
+            intent.putExtra("content", todo.getTodos());
+            startActivity(intent);
+        }
     }
 }
