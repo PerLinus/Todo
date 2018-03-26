@@ -71,10 +71,11 @@ public class TodoListActivity extends AppCompatActivity implements View.OnClickL
             startActivity(intent);
         } else {
             Todo todo = (Todo) view.getTag();
-            Intent intent = new Intent(TodoListActivity.this, TodoActivity.class);
-            intent.putExtra("name", todo.getName());
-            intent.putExtra("content", todo.getTodos());
+            Intent intent = new Intent(TodoListActivity.this, EditAndViewTodoFragment.class);
             startActivity(intent);
+           /* intent.putExtra("name", todo.getName());
+            intent.putExtra("content", todo.getTodos());
+            startActivity(intent);*/
         }
     }
 }
